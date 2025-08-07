@@ -75,7 +75,8 @@ Title: Java Basics, Author: John, Issued: false
 
 ## 📷 Screenshot Markdown :
 
-![Library output]()
-
-Make sure your screenshots are saved in a `screenshots/` folder.
+![Library output](https://github.com/Dharanikpdb-007/Task-3/blob/d45493ec3444a76a238f23b7c6ed97ea6b360b1f/Screenshot%20(19).png
+<br>
+<br>
+![Library output](https://github.com/Dharanikpdb-007/Task-3/blob/b81b70583a014f5a4c669d67089f04e4f8e8cc91/Screenshot%20(20).png)
 

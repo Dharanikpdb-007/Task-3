@@ -3,8 +3,9 @@
 
 # 📚 Library Management System (Java OOP Project)
 
-## 🔰 Objective
-This is a beginner-level Java project using **Object-Oriented Programming (OOP)** to manage a simple library system. It supports adding books and users, issuing and returning books, and viewing available books.
+## 🔰What I did here:
+ - I have created an java code for Library Management System. The program can Add new books and users, Issue a book to a user, Return a book, View list of all books and exit only when user give exit option.
+ - During checking code I found that when we entered an id in string it shows error then using looping statements it shows enter valid id in number.
 
 ## 🛠️ Tools Used
 - Language: **Java**

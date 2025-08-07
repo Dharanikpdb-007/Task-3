@@ -1,0 +1,139 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+class Book {
+    String title;
+    String author;
+    boolean isIssued;
+  Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+        this.isIssued = false;
+    }
+    public void display() {
+        System.out.println("Title: " + title + ", Author: " + author + ", Issued: " + isIssued);
+    }
+}
+class User {
+    String name;
+    int userId;
+    User(String name, int userId) {
+        this.name = name;
+        this.userId = userId;
+    }
+}
+class Library {
+    ArrayList<Book> books = new ArrayList<>();
+    ArrayList<User> users = new ArrayList<>();
+    public void addBook(Book book) {
+        books.add(book);
+        System.out.println("Book added successfully.");
+    }
+    public void addUser(User user) {
+        users.add(user);
+        System.out.println("User added successfully.");
+    }
+    public void issueBook(String title) {
+        for (Book book : books) {
+            if (book.title.equalsIgnoreCase(title) && !book.isIssued) {
+                book.isIssued = true;
+                System.out.println("Book issued successfully.");
+                return;
+            }
+        }
+        System.out.println("Book not available or already issued.");
+    }
+    public void returnBook(String title) {
+        for (Book book : books) {
+            if (book.title.equalsIgnoreCase(title) && book.isIssued) {
+                book.isIssued = false;
+                System.out.println("Book returned successfully.");
+                return;
+            }
+        }
+        System.out.println("Invalid return attempt.");
+    }
+    public void viewBooks() {
+        System.out.println("Available Books:");
+        for (Book book : books) {
+            book.display();
+        }
+    }
+}
+public class LibraryManagementSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Library lib = new Library();
+  while (true) {
+            System.out.println("\n--- Library Menu ---");
+            System.out.println("1. Add Book");
+            System.out.println("2. Add User");
+            System.out.println("3. Issue Book");
+            System.out.println("4. Return Book");
+            System.out.println("5. View Books");
+            System.out.println("6. Exit");
+            System.out.print("Choose option: ");
+            int choice;
+            if (sc.hasNextInt()) {
+                choice = sc.nextInt();
+                sc.nextLine();
+            } else {
+                System.out.println("Enter a valid number.");
+                sc.nextLine();
+                continue;
+            }
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter book title: ");
+                    String title1 = sc.nextLine();
+                    System.out.print("Enter author name: ");
+                    String author = sc.nextLine();
+                    lib.addBook(new Book(title1, author));
+                    break;
+                case 2:
+                    System.out.print("Enter user name: ");
+                    String name = sc.nextLine();
+
+                    String input;
+                    int userId;
+                    while (true) {
+                        System.out.print("Enter user ID (number): ");
+                        input = sc.nextLine();
+                        boolean isNumber = true;
+                        for (char c : input.toCharArray()) {
+                            if (!Character.isDigit(c)) {
+                                isNumber = false;
+                                break;
+                            }
+                        }
+                        if (isNumber) {
+                            userId = Integer.parseInt(input);
+                            break;
+                        } else {
+                            System.out.println("Enter a valid ID number.");
+                        }
+                    }
+                    lib.addUser(new User(name, userId));
+                    break;
+                case 3:
+                    System.out.print("Enter book title to issue: ");
+                    String issueTitle = sc.nextLine();
+                    lib.issueBook(issueTitle);
+                    break;
+                case 4:
+                    System.out.print("Enter book title to return: ");
+                    String returnTitle = sc.nextLine();
+                    lib.returnBook(returnTitle);
+                    break;
+                case 5:
+                    lib.viewBooks();
+                    break;
+                case 6:
+                    System.out.println("Exiting...");
+                    sc.close();
+                    return;
+                default:
+                    System.out.println("Invalid option.");
+            }
+        }
+    }
+}
